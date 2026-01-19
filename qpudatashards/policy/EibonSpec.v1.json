@@ -1,0 +1,56 @@
+{
+  "schemaversion": "EibonSpec.v1",
+  "hexstamp": "0xEIBONSPECV1PLACEHOLDER",
+  "policydid": "did:bostrom:WBTCEIBONPLACEHOLDER",
+  "steward_dids": [
+    "did:bostrom:local-community-placeholder",
+    "did:bostrom:platform-cybercorebrain-placeholder"
+  ],
+
+  "location_scope": "global",
+  "applies_to_data_capital_classes": [
+    "water_quality",
+    "soil_restoration",
+    "addiction_reduction",
+    "biodegradable_hardware"
+  ],
+
+  "eibon_formula": "Eibon = K^alpha * E^beta * (1 - R)^gamma",
+  "alpha": 1.0,
+  "beta": 1.0,
+  "gamma": 1.0,
+
+  "ker_input_constraints": {
+    "k_min": 0.0,
+    "k_max": 1.0,
+    "e_min": 0.0,
+    "e_max": 1.0,
+    "r_min": 0.0,
+    "r_max": 1.0
+  },
+
+  "ci_requirements": {
+    "reject_if_k_e_r_out_of_range": true,
+    "reject_if_eibon_decreases_on_corridor_relaxation": true,
+    "allow_eibon_decrease_only_on_emergency_shutdown": false
+  },
+
+  "routing_rules": {
+    "min_eibon_for_market_listing": 0.50,
+    "min_eibon_for_premium_incentives": 0.80
+  },
+
+  "revenue_share_policy": {
+    "require_revenue_share_vector_sum_1": true,
+    "min_local_steward_share_if_e_gt_threshold": {
+      "threshold_e": 0.70,
+      "min_share": 0.20
+    }
+  },
+
+  "versioning": {
+    "prev_eibon_spec": null,
+    "change_type": "initial",
+    "timestamp_utc": "2026-01-05T00:00:00Z"
+  }
+}
