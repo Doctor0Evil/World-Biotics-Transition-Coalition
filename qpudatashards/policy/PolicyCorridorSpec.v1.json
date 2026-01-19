@@ -1,0 +1,87 @@
+{
+  "schemaversion": "PolicyCorridorSpec.v1",
+  "hexstamp": "0xPOLICYCORRIDORV1PLACEHOLDER",
+  "policydid": "did:bostrom:WBTCPOLICYPLACEHOLDER",
+  "steward_dids": [
+    "did:bostrom:local-community-placeholder",
+    "did:bostrom:platform-cybercorebrain-placeholder"
+  ],
+
+  "location_hex": "85c3a5ffffff", 
+  "region": "Phoenix-AZ",
+  "corridor_class": "wbtc.global",
+  "data_capital_class": "water_quality",
+  "licensing_scope": "open-ecology",
+
+  "time_window_start_utc": "2026-01-01T00:00:00Z",
+  "time_window_end_utc": "2027-01-01T00:00:00Z",
+
+  "signals": [
+    {
+      "id": "NOX",
+      "lyap_channel": 0,
+      "description": "Stack NOx concentration",
+      "unit": "mg/Nm3",
+      "legal_limit": 150.0,
+      "gold_limit": 40.0,
+      "inner_science_limit": 30.0,
+      "weight_w": 0.22,
+      "rx_min": 0.0,
+      "rx_max": 1.0
+    },
+    {
+      "id": "PM25",
+      "lyap_channel": 1,
+      "description": "Fine particulate mass",
+      "unit": "mg/Nm3",
+      "legal_limit": 10.0,
+      "gold_limit": 5.0,
+      "inner_science_limit": 4.0,
+      "weight_w": 0.20,
+      "rx_min": 0.0,
+      "rx_max": 1.0
+    }
+  ],
+
+  "residual_spec": {
+    "formula": "V_t = sum_j w_j * r_j(t)",
+    "non_increasing_invariant": true,
+    "per_axis_hard_limit": true
+  },
+
+  "ker_scores": {
+    "knowledge_factor_k": 0.92,
+    "eco_impact_e": 0.90,
+    "risk_of_harm_r": 0.13
+  },
+
+  "governance_constraints": {
+    "min_quorum_size": 3,
+    "min_platform_diversity": 2,
+    "tightening_easier_than_loosening": true,
+    "requires_ker_non_worsening_for_relaxation": true,
+    "no_corridor_no_deployment": true
+  },
+
+  "ci_requirements": {
+    "enforce_no_corridor_no_deployment": true,
+    "enforce_no_shard_no_compile": true,
+    "enforce_v_next_le_v_prev": true,
+    "reject_if_any_rj_gt_1": true,
+    "reject_if_missing_ker_fields": true
+  },
+
+  "evidence_shards": [
+    "qpudatashards/evidence/EcoEvidenceCrate.NOX.Phoenix.2024-2026.v1.json"
+  ],
+
+  "history": [
+    {
+      "prev_policy_shard": null,
+      "change_type": "initial",
+      "summary": "Phoenix WBTC baseline corridor spec for NOx and PM2.5.",
+      "timestamp_utc": "2026-01-05T00:00:00Z",
+      "author_did": "did:bostrom:WBTCPOLICYPLACEHOLDER"
+    }
+  ]
+}
