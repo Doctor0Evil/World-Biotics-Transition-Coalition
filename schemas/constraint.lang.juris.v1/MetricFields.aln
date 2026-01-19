@@ -1,0 +1,23 @@
+// Minimal metric bundle for any WBTC qpudatashard.
+// Dialect: constraint.lang.juris.v1
+
+schema MetricFields.v1 {
+  // Normalized triad
+  field knowledgefactor_k : f64
+    constraint 0.0 <= knowledgefactor_k <= 1.0
+
+  field ecoimpact_e : f64
+    constraint 0.0 <= ecoimpact_e <= 1.0
+
+  field riskofharm_r : f64
+    constraint 0.0 <= riskofharm_r <= 1.0
+
+  // Normalized risk coordinates, each rx_i in [0,1]
+  // Length is domain‑specific but fixed per shard type.
+  field rx : Vec<f64>
+    constraint forall i in rx :: 0.0 <= rx[i] <= 1.0
+
+  // Scalar Lyapunov residual V_t >= 0
+  field residual_vt : f64
+    constraint residual_vt >= 0.0
+}
